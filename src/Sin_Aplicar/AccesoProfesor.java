@@ -9,13 +9,13 @@ public class AccesoProfesor implements BaseDeDatos {
         this.contraseña = contraseña;
     }
 
-    public void recopilarInformacion(){
-        conectarBD();
+    public final void recopilarInformacion(){
+
     }
 
     public void conectarBD(){
         System.out.println("conectando a base de datos...");
-        conectar();
+
     }
 
     @Override

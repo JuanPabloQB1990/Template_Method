@@ -10,7 +10,7 @@ public class AccesoEstudiante implements BaseDeDatos {
         this.contraseña = contraseña;
     }
 
-    public void recopilarInformacion(){
+    public final void recopilarInformacion(){
         conectarBD();
     }
 

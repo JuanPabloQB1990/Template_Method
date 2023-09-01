@@ -1,7 +1,7 @@
 package Aplicado;
 
-public abstract class AccesoPlataforma {
-    // Variables miembro
+public abstract class AccesoPlataforma implements BaseDeDatos {
+
     protected String contraseña;
     protected String no_documento;
 
@@ -11,18 +11,30 @@ public abstract class AccesoPlataforma {
         this.contraseña = contraseña;
         this.no_documento = no_documento;
     }
-
-    // Método para validar la información
-    public abstract void validarInformacion();
-
-    // Método para recopilar información
-    public void recopilarInformacion() {
-        // Implementación para recopilar información
+    @Override
+    public void conectar() {
+        System.out.println("conectado a la base de datos");
     }
+    @Override
+    public abstract void consultar();
+    @Override
+    public abstract void cerrarConexion();
+    public final void validarInformacion() {
+        conectar();
+        recopilarInformacion();
 
-    // Método para verificar si un estudiante tiene acceso
-    public abstract boolean verificarEstudiante();
+        if (verificarIdentidad()){
+            mostrarPaginaPrincipal();
+        }else{
+            System.out.println("no se puede mostrar pagina");
+        }
+    };
 
-    // Método para mostrar la página del estudiante
-    public abstract boolean mostrarPaginaEstudiante();
+    public abstract void recopilarInformacion();
+
+
+    public abstract boolean verificarIdentidad();
+
+
+    public abstract void mostrarPaginaPrincipal();
 }
