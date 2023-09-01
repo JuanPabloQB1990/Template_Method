@@ -11,18 +11,15 @@ public abstract class AccesoPlataforma {
         this.contraseña = contraseña;
         this.no_documento = no_documento;
     }
-
-    // Método para validar la información
-    public abstract void validarInformacion();
-
-    // Método para recopilar información
-    public void recopilarInformacion() {
-        // Implementación para recopilar información
-    }
-
-    // Método para verificar si un estudiante tiene acceso
-    public abstract boolean verificarEstudiante();
-
-    // Método para mostrar la página del estudiante
-    public abstract boolean mostrarPaginaEstudiante();
+    public void validarInformacion(){
+        recopilarInformacion();
+        if (verificarIdentidad() == true){
+            mostrarPaginaPrincipal();
+        } else{
+            System.out.println("Verifique la información");
+        }
+    };
+    public abstract void recopilarInformacion();
+    public abstract boolean verificarIdentidad();
+    public abstract void mostrarPaginaPrincipal();
 }
